@@ -10,7 +10,7 @@ def first_run():
 def run():
     user_comand = input("Введите команду: ")
     if user_comand == "add":
-        add(id_counter)
+        add(id_counter(), del_counter)
     elif user_comand == "show":
         show()
     elif user_comand == "edit":
@@ -25,23 +25,24 @@ def run():
         run()
 
 
-def add(counter):
-    data = {}
-    id: int = counter + 1
+def add(id_count, del_count):
+    data = json_loader()
     title = input("Введите заголовок заметки: ")
     body = input("Введите текст заметки: ")
     date = datetime.today().strftime('%Y-%m-%d')
 
-    data['id'] = id
-    data['title'] = title
-    data['body'] = body
-    data['datetime'] = date
+    new_note = {
+        "id": id_count + del_count,
+        "title": title,
+        "body": body,
+        "datatime": date,
+    }
 
-    with open('noteStorage.json', 'a', encoding='utf-8') as file:
-        json.dump(data, file, ensure_ascii=False)
-        file.write('\n')
+    data["notes"].append(new_note)
 
-    counter += 1
+    with open('noteStorage.json', 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=2, ensure_ascii=False)
+
     print("Заметка добавлена в файл noteStorage.json")
     print("")
     run()
@@ -58,16 +59,29 @@ def edit():
 
 
 def delete():
-    print("deleting")
+    # data = json_loader()
+    # find_id = int(input("Введите id"))
+    # for obj in data['notes']:
+    #     if find_id in obj.values():  # изменить на поиск именно айди
+    #         data.remove(obj)
+    #
+    # with open('noteStorage.json', 'w', encoding='utf-8') as file:
+    #     json.dump(data, file, ensure_ascii=False)
+    print("deling")
     run()
 
 
-# def id_counter():
-#     with open('noteStorage.json') as f:
-#         data = json.load(f)
-#         count = len(data)
-#     return count + 1
+def json_loader():
+    with open('noteStorage.json', 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    return data
 
 
-id_counter = 0
+def id_counter():
+    data = json_loader()
+    count = len(data['notes'])
+    return count + 1
+
+
+del_counter = 0
 first_run()
