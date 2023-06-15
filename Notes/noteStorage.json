@@ -2,57 +2,21 @@
   "notes": [
     {
       "id": 1,
-      "title": "note1",
-      "body": "testnote",
-      "datatime": "2023-06-15"
+      "title": "new tests",
+      "body": "aaa-bbb-ccc",
+      "datatime": "2023-06-16"
     },
     {
       "id": 2,
-      "title": "two more",
-      "body": "test text",
-      "datatime": "2023-06-15"
+      "title": "newTExt2",
+      "body": "text2TEXT2ТЕКСТ2",
+      "datatime": "2023-06-16"
     },
     {
-      "id": 4,
-      "title": "странность",
-      "body": "Почему-то иногда лагает русс.яз",
-      "datatime": "2023-06-15"
-    },
-    {
-      "id": 4,
-      "title": "странность должна пропасть",
-      "body": "проверка текстом",
-      "datatime": "2023-06-15"
-    },
-    {
-      "id": 5,
-      "title": "и еще 1 тест",
-      "body": "на всякий случай",
-      "datatime": "2023-06-15"
-    },
-    {
-      "id": 6,
-      "title": "deltest",
-      "body": "testtext2",
-      "datatime": "2023-06-15"
-    },
-    {
-      "id": 7,
-      "title": "финальная на сегодня",
-      "body": "тестовый текст",
-      "datatime": "2023-06-15"
-    },
-    {
-      "id": 8,
-      "title": "забыл про делинг каунт",
-      "body": "теперь исправил",
-      "datatime": "2023-06-15"
-    },
-    {
-      "id": 9,
-      "title": "микрофикс и спать",
-      "body": "текстик",
-      "datatime": "2023-06-15"
+      "id": 3,
+      "title": "тест 3",
+      "body": "на русском языке",
+      "datatime": "2023-06-16"
     }
   ]
 }
