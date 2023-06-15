@@ -2,45 +2,21 @@
   "notes": [
     {
       "id": 1,
-      "title": "note1",
-      "body": "testnote",
-      "datatime": "2023-06-15"
+      "title": "new tests",
+      "body": "aaa-bbb-ccc",
+      "datatime": "2023-06-16"
     },
     {
       "id": 2,
-      "title": "two more",
-      "body": "test text",
-      "datatime": "2023-06-15"
+      "title": "newTExt2",
+      "body": "text2TEXT2ТЕКСТ2",
+      "datatime": "2023-06-16"
     },
     {
-      "id": 6,
-      "title": "deltest",
-      "body": "testtext2",
-      "datatime": "2023-06-15"
-    },
-    {
-      "id": 7,
-      "title": "финальная на сегодня",
-      "body": "тестовый текст",
-      "datatime": "2023-06-15"
-    },
-    {
-      "id": 8,
-      "title": "newtest",
-      "body": "рандомный текст",
-      "datatime": "2023-06-15"
-    },
-    {
-      "id": 9,
-      "title": "anoteher test",
-      "body": "bla-bla бла-бла",
-      "datatime": "2023-06-15"
-    },
-    {
-      "id": 10,
-      "title": "and 1 more",
-      "body": "more tests",
-      "datatime": "2023-06-15"
+      "id": 3,
+      "title": "тест 3",
+      "body": "на русском языке",
+      "datatime": "2023-06-16"
     }
   ]
 }
