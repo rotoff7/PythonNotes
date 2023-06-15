@@ -8,16 +8,16 @@ def first_run():
 
 
 def run():
-    user_comand = input("Введите команду: ")
-    if user_comand == "add":
-        add(id_counter(), del_counter)
-    elif user_comand == "show":
+    user_command = input("Введите команду: ")
+    if user_command == "add":
+        add(id_counter())
+    elif user_command == "show":
         show()
-    elif user_comand == "edit":
+    elif user_command == "edit":
         edit()
-    elif user_comand == "delete":
+    elif user_command == "delete":
         delete()
-    elif user_comand == "exit":
+    elif user_command == "exit":
         print("Заврешение работы PythonNotes")
         exit(0)
     else:
@@ -25,14 +25,14 @@ def run():
         run()
 
 
-def add(id_count, del_count):
+def add(id_count):
     data = json_loader()
     title = input("Введите заголовок заметки: ")
     body = input("Введите текст заметки: ")
     date = datetime.today().strftime('%Y-%m-%d')
 
     new_note = {
-        "id": id_count + del_count,
+        "id": id_count,
         "title": title,
         "body": body,
         "datatime": date,
@@ -40,8 +40,7 @@ def add(id_count, del_count):
 
     data["notes"].append(new_note)
 
-    with open('noteStorage.json', 'w', encoding='utf-8') as file:
-        json.dump(data, file, indent=2, ensure_ascii=False)
+    json_writer(data)
 
     print("Заметка добавлена в файл noteStorage.json")
     print("")
@@ -59,15 +58,13 @@ def edit():
 
 
 def delete():
-    # data = json_loader()
-    # find_id = int(input("Введите id"))
-    # for obj in data['notes']:
-    #     if find_id in obj.values():  # изменить на поиск именно айди
-    #         data.remove(obj)
-    #
-    # with open('noteStorage.json', 'w', encoding='utf-8') as file:
-    #     json.dump(data, file, ensure_ascii=False)
-    print("deling")
+    data = json_loader()
+    id_for_del = int(input("Введите id заметки подлежащую удалению: "))
+    for obj in data['notes']:
+        if obj['id'] == id_for_del:
+            data['notes'].remove(obj)
+    json_writer(data)
+    print(f"Заметка с id номером '{id_for_del}' успешна удалена.")
     run()
 
 
@@ -83,5 +80,9 @@ def id_counter():
     return count + 1
 
 
-del_counter = 0
+def json_writer(new_data):
+    with open('noteStorage.json', 'w', encoding='utf-8') as file:
+        json.dump(new_data, file, indent=2, ensure_ascii=False)
+
+
 first_run()
