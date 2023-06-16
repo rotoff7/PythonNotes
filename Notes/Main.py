@@ -108,7 +108,7 @@ def json_loader():
     return data
 
 
-def id_counter():  # id всегда будет на 1 больше, чем наибольший в списке (фикс проблемы id после удаления заметки)
+def id_counter():
     data = json_loader()
     count = len(data['notes']) + 1
     flag = True
@@ -116,8 +116,12 @@ def id_counter():  # id всегда будет на 1 больше, чем на
         for obj in data['notes']:
             if obj['id'] == count:
                 count += 1
+                flag = True
                 break  # не уверен насколько тут нужен этот break
-        return count
+            else:
+                flag = False
+    return count
+
 
 
 def json_writer(new_data):
