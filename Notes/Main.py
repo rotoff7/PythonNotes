@@ -48,7 +48,8 @@ def add(id_count):
 
 
 def show(count_check):
-    user_command = input("Введите команду (all - показать все заметки, date - показать заметки по нужной дате): ")
+    user_command = input("Введите команду (all - показать все заметки, date - показать заметки по нужной дате, "
+                         "id - показать заметку по id): ")
     data = json_loader()
     if user_command == "all":
         empty_check(count_check)
@@ -57,6 +58,10 @@ def show(count_check):
     elif user_command == "date":
         empty_check(count_check)
         print_by_date(data)
+        run()
+    elif user_command == 'id':
+        empty_check(count_check)
+        print_by_id(data)
         run()
     else:
         print("Введена некорректная команда.")
@@ -123,10 +128,7 @@ def json_writer(new_data):
 def print_all(json_data):
     print("\nВот все сохраненные заметки: \n")
     for note in json_data['notes']:
-        print(f"Заметка id '{note['id']}'")
-        print(f"Заголовок: {note['title']}")
-        print(f"Текст заметки: {note['body']}")
-        print()
+        print_json_obj(note)
 
 
 def print_by_date(json_data):
@@ -137,12 +139,24 @@ def print_by_date(json_data):
             if flag:  # Чтоб следующий текст выводился только 1 раз.
                 flag = False
                 print("\nВот все заметки по искомой дате: \n")
-            print(f"Заметка id '{note['id']}'")
-            print(f"Заголовок: {note['title']}")
-            print(f"Текст заметки: {note['body']}")
-            print()
+            print_json_obj(note)
     if flag:
         print("\nЗаметок по выбранной дате не обнаружено или дата введена в некорректном формате. \n")
+    run()
+
+
+def print_by_id(json_data):
+    try:
+        id_for_check = int(input("Введите id заметки: "))
+    except ValueError:
+        print("Введено некорректное значение, введите id номер.")
+        print_by_id(json_data)
+    for note in json_data['notes']:
+        if note['id'] == id_for_check:
+            print("\nИскомая заметка: \n")
+            print_json_obj(note)
+            run()
+    print(f"Заметка с id номером '{id_for_check}' не найдена.")
     run()
 
 
@@ -159,6 +173,14 @@ def id_note_edit(o):
     o['title'] = new_title
     o['body'] = new_body
     o['datatime'] = new_date
+
+
+def print_json_obj(o):
+    print(f"Заметка id '{o['id']}'")
+    print(f"Заголовок: {o['title']}")
+    print(f"Текст заметки: {o['body']}")
+    print(f"Дата создания/изменения: {o['datatime']}")
+    print()
 
 
 first_run()
