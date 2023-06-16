@@ -2,20 +2,38 @@
   "notes": [
     {
       "id": 1,
-      "title": "new tests",
-      "body": "aaa-bbb-ccc",
-      "datatime": "2023-06-16"
-    },
-    {
-      "id": 2,
-      "title": "newTExt2",
-      "body": "text2TEXT2ТЕКСТ2",
+      "title": "new_test",
+      "body": "more_test_text",
       "datatime": "2023-06-16"
     },
     {
       "id": 3,
       "title": "тест 3",
       "body": "на русском языке",
+      "datatime": "2023-06-16"
+    },
+    {
+      "id": 5,
+      "title": "больще заметок",
+      "body": "богу заметок",
+      "datatime": "2023-06-16"
+    },
+    {
+      "id": 6,
+      "title": "и еще 1",
+      "body": "тексттексттекс",
+      "datatime": "2023-06-16"
+    },
+    {
+      "id": 7,
+      "title": "id_test",
+      "body": "id should be = 7",
+      "datatime": "2023-06-16"
+    },
+    {
+      "id": 8,
+      "title": "more",
+      "body": "tests",
       "datatime": "2023-06-16"
     }
   ]
