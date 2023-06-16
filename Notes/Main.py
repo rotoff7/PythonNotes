@@ -48,19 +48,17 @@ def add(id_count):
 
 
 def show(count_check):
+    empty_check(count_check)
     user_command = input("Введите команду (all - показать все заметки, date - показать заметки по нужной дате, "
                          "id - показать заметку по id): ")
     data = json_loader()
     if user_command == "all":
-        empty_check(count_check)
         print_all(data)
         run()
     elif user_command == "date":
-        empty_check(count_check)
         print_by_date(data)
         run()
     elif user_command == 'id':
-        empty_check(count_check)
         print_by_id(data)
         run()
     else:
@@ -112,6 +110,8 @@ def id_counter():
     data = json_loader()
     count = len(data['notes']) + 1
     flag = True
+    if count == 1:  # Костыль для нормального запуска с пустым json-ом.
+        flag = False
     while flag:
         for obj in data['notes']:
             if obj['id'] == count:
@@ -121,7 +121,6 @@ def id_counter():
             else:
                 flag = False
     return count
-
 
 
 def json_writer(new_data):
